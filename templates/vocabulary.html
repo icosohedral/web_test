@@ -1,0 +1,109 @@
+{% load static %}
+<input type="submit" value="添加" onclick="addBtn()"> &nbsp; <input type="text" id="add" name="add" style="width: 100px;"> &nbsp; 
+<input type="submit" value="删除" onclick="delBtn()"> &nbsp; <input type="number" id="delete" name="delete" style="width: 40px;"> <br><br>
+<input type="submit" value="清空"  onclick="emptyBtn()"> &nbsp; 
+<input type="submit" value="导出" onclick="downBtn()">
+<select id="dlType">
+  <option value ="txt">TXT</option>
+  <option value ="csv">CSV</option>
+</select> &nbsp; 
+
+<input type="submit" id="more" value="显示高级选项" onclick="moreBtn()">
+<div class="hidden" style="display: none;">
+<hr align=left width=300 size=1>
+<input type="submit" value="扇贝" onclick="shanbayBtn()"> &nbsp; 
+<input type="submit" value="备份" onclick="backupBtn()"> &nbsp; 
+</div>
+
+<hr align=left width=300 size=1>
+<ol>
+{% for voca in vocabularies %}
+    <li>{{ voca }}</li>
+{% endfor %}
+</ol>
+
+<script>
+    //添加单词
+    function addBtn(){
+        var text = document.getElementById("add").value;
+        if (text){
+        var request = new XMLHttpRequest();
+        var url = '/api/vocabulary?text='+text;
+        request.open("GET", url, true);
+        request.send();
+        window.alert("添加成功");
+        location.reload();
+        }
+        else{
+        window.alert("请输入需要添加的语句");
+        }
+    }
+    //删除单词
+    function delBtn(){
+        var text = document.getElementById("delete").value;
+        if (text){
+        var request = new XMLHttpRequest();
+        var url = '/api/vocabulary?delid='+text;
+        request.open("GET", url, true);
+        request.send();
+        window.alert("删除成功");
+        location.reload();
+        }
+        else{
+        window.alert("请输入需要删除的序号");
+        }
+    }
+    //下载单词列表
+    function downBtn(){
+        var text = document.getElementById("dlType").value;
+        if (text){
+        var url = '/api/vocabulary?dl='+text;
+        window.open(url, "_blank");
+        }
+        else{
+        window.alert("导出出错啦！");
+        }
+    }
+    //清空列表（调用api，需要确认，并获取返回值）
+    function emptyBtn() {
+        if (confirm("确定要清空吗？")) {
+            var request = new XMLHttpRequest();
+            var url = "http://192.168.0.30/api/vocabulary?empty=true";
+            request.open("GET", url, true);
+            request.send();
+            //window.alert("清空完成！");
+            location.reload();
+        }
+    }
+    //转到扇贝单词
+    function shanbayBtn(){
+        var url = "https://web.shanbay.com/wordsweb/#/collection";
+        window.open(url, "_blank");
+    }
+    function moreBtn() {
+        var text=document.getElementById('more').value
+        if(text=="显示高级选项"){
+            var x = document.getElementsByClassName('hidden')
+            var i
+            for (i=0; i < x.length; i++) {
+                x[i].style.display="block";
+            }
+            document.getElementById('more').value = "隐藏高级选项";
+        }else{
+            var x = document.getElementsByClassName('hidden')
+            var i
+            for (i=0; i < x.length; i++) {
+                x[i].style.display="none";
+            }
+            document.getElementById('more').value = "显示高级选项";
+        }
+    }
+    //备份单词表
+    function backupBtn() {
+        var request = new XMLHttpRequest();
+        var url = "http://192.168.0.30/api/vocabulary?backup=true";
+        request.open("GET", url, true);
+        request.send();
+        window.alert("备份完成！");
+    }
+</script>

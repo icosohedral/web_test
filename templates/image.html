@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>R2S图片采集</title>
+    <style>
+        img {
+            width: 200px;
+        }
+        .outter{
+            width: 1300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outter">
+        {% for image in images %}
+            <img src="/static/res/image/{{ image }}">
+        {% endfor %}
+    </div>
+</body>
+
+
+</html>

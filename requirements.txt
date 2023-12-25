@@ -1,0 +1,8 @@
+Django==4.2.1
+django-cors-headers==3.14.0
+django-extensions==3.2.1
+django-werkzeug-debugger-runserver==0.3.1
+paramiko
+pyOpenSSL
+requests
+BeautifulSoup4

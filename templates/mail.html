@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Emails</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <label for="emailSelect">选择用户:</label>
+      <select id="emailSelect">
+        <option value="--choose--">--choose--</option>
+      </select>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button onclick="delMail()">清空邮件</button>
+    </div>
+    <table id="emailTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Title</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+<script>
+    const emailSelect_value = document.getElementById('emailSelect');
+
+    fetch('/api/getmailuser')
+      .then(response => response.json())
+      .then(data => {
+        if (data.length > 0) {
+          // 删除默认选项
+          emailSelect_value.remove(0);
+
+          // 为每个邮件用户创建一个选项并添加到下拉框中
+          data.forEach(user => {
+            const option = document.createElement('option');
+            option.value = user;
+            option.text = user;
+            emailSelect_value.add(option);
+          });
+        }
+      })
+      .catch(error => console.error(error));
+
+  //change table
+  const emailSelect = document.getElementById('emailSelect');
+  const emailTableBody = document.querySelector('#emailTable tbody');
+
+  emailSelect.addEventListener('change', () => {
+    const user = emailSelect.value;
+
+    // 构造 API 请求 URL
+    const url = "/api/getmail?user="+user;
+
+    // 发送 GET 请求
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // 清空表格
+        emailTableBody.innerHTML = '';
+
+        // 根据 API 返回结果动态生成表格行
+        data.forEach(email => {
+          const row = emailTableBody.insertRow();
+          const dateCell = row.insertCell();
+          const fromCell = row.insertCell();
+          const toCell = row.insertCell();
+          const titleCell = row.insertCell();
+          const contentCell = row.insertCell();
+
+          dateCell.innerText = email.date;
+          fromCell.innerText = email.from;
+          toCell.innerText = email.to;
+          titleCell.innerText = email.title;
+          contentCell.innerHTML = email.content;
+          contentCell.classList.add('content');
+        });
+      })
+      .catch(error => console.error(error));
+  });
+    //clean mails
+    function delMail(){
+        const user = emailSelect.value;
+        var request = new XMLHttpRequest();
+        var url = "/api/delmail?user="+user;
+        request.open("GET", url, true);
+        request.send();
+        window.alert("清空完成");
+        location.reload();
+    }
+</script>
+  </body>
+</html> 

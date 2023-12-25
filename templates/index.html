@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+  <title>OpenAI Quickstart</title>
+  <link
+    rel="shortcut icon"
+    href="/static/image/dog.png"
+  />
+  <link rel="stylesheet" href="/static/css/main.css" />
+</head>
+
+<body>
+  <img src="/static/image/dog.png" class="icon" />
+  <h3>Name my pet</h3>
+  <form action="/" method="post">
+    <input type="text" name="animal" placeholder="Enter an animal" required />
+    <input type="submit" value="Generate names" />
+  </form>
+  {% if result %}
+  <img src="/static/image/openai.png" >
+  {% endif %}
+</body>

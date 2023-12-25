@@ -1,0 +1,31 @@
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:443
+ * Running on https://192.168.0.30:443
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 213-327-556
+192.168.0.2 - - [04/Apr/2023 10:55:50] "GET /api/bhpwd?user=demo123&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:57:46] "GET /api/bhpwd?user=demo&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:57:47] "GET /api/bhpwd?user=demo&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:57:48] "GET /api/bhpwd?user=demo&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:57:50] "GET /api/bhpwd?user=demo&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:57:55] "GET /api/bhpwd?user=admin&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:58:23] "GET /api/bhpwd?user=demo1&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:58:43] "GET /api/bhpwd?user=周振军&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:58:45] "GET /api/bhpwd?user=周振军&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:58:47] "GET /api/bhpwd?user=周振军&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [04/Apr/2023 10:58:47] "GET /api/bhpwd?user=周振军&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [04/Apr/2023 11:03:11] "GET /api/bhpwd?user=demo&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [04/Apr/2023 11:03:21] "GET /api/bhpwd?user=demo1&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [04/Apr/2023 11:25:56] "GET /api/bhpwd?user=admin&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [04/Apr/2023 11:26:03] "GET /api/bhpwd?user=admin&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [04/Apr/2023 11:26:28] "GET /api/bhpwd?user=demo1&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [04/Apr/2023 11:27:52] "GET /api/bhpwd?user=demo1&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [06/Apr/2023 14:49:39] "GET /api/bhpwd?user=admin&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [06/Apr/2023 15:51:35] "GET /api/bhpwd?user=admin&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [07/Apr/2023 10:48:07] "GET /api/bhpwd?user=admin&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [10/Apr/2023 10:22:20] "GET /api/bhpwd?user=demo&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.12 - - [10/Apr/2023 10:48:01] "GET /api/bhpwd?user=demo&host=192.168.0.207 HTTP/1.1" 200 -
+192.168.0.2 - - [10/Apr/2023 12:08:56] "GET /api/bhpwd?user=demo&host=192.168.0.207 HTTP/1.1" 200 -
