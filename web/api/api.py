@@ -26,7 +26,8 @@ def cprint(text, color='green', bold=True, underline=False):
     print(text+normal)
     
 def test(request):
-    return render(request, 'api.html', {'text':'salut!'})
+    res = os.popen("curl http://111.229.216.57:8888").read()
+    return render(request, 'api.html', {'text': res})
     
 if __name__ == '__main__':
     pass
